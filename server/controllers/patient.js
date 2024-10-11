@@ -1,5 +1,15 @@
 const patientModel = require('../models/patientModel');
 
+const getAllPatient = async(req, res) => {
+    let success = false;
+    try {
+        const patient = await patientModel.find();
+        return res.status(200).json({success : true, "message" : "Displaying all patient", patient});
+    } catch (error) {
+        return res.status(500).json({success, "message" : "Internal Server Error"});
+    }
+}
+
 const addPatient = async(req, res) => {
     const id = req.user;
     const {name, email, phone, bloodGroup, hospitalName, city} = req.body;
@@ -37,9 +47,21 @@ const deletePatient = async(req, res) => {
     }
 }
 
+const findPatientByCity = async(req, res) => {
+    let success = false;
+    try {
+        const patient = await patientModel.find({"city" : req.body.city});
+        if(patient.length === 0) return res.status(404).json({success, "message" : "Patient not found"});
+        return res.status(200).json({success : true, "message" : "Displaying all patient", patient});
+    } catch (error) {
+        return res.status(500).json({success, "message" : "Internal Server Error"});
+    }
+}
+
 module.exports = {
     addPatient,
     updatePatient,
     deletePatient,
-
+    getAllPatient,
+    findPatientByCity
 }
