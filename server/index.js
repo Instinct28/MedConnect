@@ -1,10 +1,21 @@
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 5000;
+const authAPIRoute = require('./routes/auth');
+const userAPIRoute = require('./routes/user');
+const patientAPIRoute = require('./routes/patient');
+const connectDatabase = require('./connection');
+const cookieParser = require('cookie-parser');
 
-app.get('/', (req, res) => {
-  res.send('Hello from backend!');
-});
+const app = express();
+const PORT = 8000;
+
+connectDatabase();
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use('/auth', authAPIRoute);
+app.use('/user', userAPIRoute);
+app.use('/patient', patientAPIRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
