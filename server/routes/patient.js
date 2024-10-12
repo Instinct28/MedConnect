@@ -8,6 +8,6 @@ route.get('/getAllPatient', getAllPatient);
 route.post('/addPatient', islogin, addPatient);
 route.put('/updatePatient', islogin, updatePatient);
 route.delete('/deletePatient', islogin, deletePatient);
-route.get('/findPatientByCity', findPatientByCity)
+route.get('/findPatientByCity', islogin, findPatientByCity)
 
 module.exports = route;
