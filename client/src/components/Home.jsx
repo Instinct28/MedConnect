@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from './Card';
+import Card from './Card/Card';
 
 const Home = () => {
 
@@ -10,7 +10,6 @@ const Home = () => {
             return res.json();
         }).then((res) => {
             setData(res.patient);
-            console.log(res.patient)
         }).catch((err) => {
             console.log("Error : ",err);
         })
@@ -23,7 +22,7 @@ const Home = () => {
             {
                 data.map((element) => {
                     return(
-                        <Card key={element._id} name={element.name} email={element.email} city={element.city} phone={element.phone} bloodGroup={element.bloodGroup} hospitalName={element.hospitalName}/>
+                        <Card key={element._id} date={element.date} name={element.name} gender={element.gender} age={element.age} city={element.city} phone={element.phone} bloodGroup={element.bloodGroup} hospitalName={element.hospitalName}/>
                     )
                 })
             }

@@ -3,28 +3,18 @@ import './Login.css';
 
 const Login = () => {
   return (
-    <div className='body'>
-        <div class="main">  	
-            <input type="checkbox" id="chk" aria-hidden="true"/>
-            <div class="signup">
-                <form>
-                    <label htmlFor="chk" aria-hidden="true">Sign up</label>
-                    <input className='input' type="text" name="name" placeholder="Full Name" required=""/>
-                    <input className='input' type="email" name="email" placeholder="Email" required=""/>
-                    <input className='input' type="text" name="city" placeholder="City" required=""/>
-                    <input className='input' type="password" name="password" placeholder="Password" required=""/>
-                    <button className='button'>Sign up</button>
-                </form>
+    <div className='container mt-4'>
+        <form>
+            <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email address</label>
+                <input type="email" className="form-control" id="email" aria-describedby="emailHelp"/>
             </div>
-            <div class="login">
-                <form>
-                    <label htmlFor="chk" aria-hidden="true">Login</label>
-                    <input className='input' type="email" name="email" placeholder="Email" required=""/>
-                    <input className='input' type="password" name="password" placeholder="Password" required=""/>
-                    <button className='button'>Login</button>
-                </form>
+            <div className="mb-3">
+                <label htmlFor="password" className="form-label">Password</label>
+                <input type="password" className="form-control"/>
             </div>
-        </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
     </div>
   )
 }

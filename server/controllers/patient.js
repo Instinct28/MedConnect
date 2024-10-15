@@ -12,14 +12,14 @@ const getAllPatient = async(req, res) => {
 
 const addPatient = async(req, res) => {
     const id = req.user;
-    const {name, email, phone, bloodGroup, hospitalName, city} = req.body;
+    const {name, gender, date, age, phone, bloodGroup, hospitalName, city} = req.body;
     let success = false;
-    if(!name || !email || !phone || !bloodGroup || !hospitalName || !city) return res.staus(401).json({success, "message" : "All fields are mandatory"});
+    if(!name || !gender || !date || !age || !phone || !bloodGroup || !hospitalName || !city) return res.status(400).json({success, "message" : "All fields are mandatory"});
     try {
-        const patient = await patientModel.create({name, email, phone, bloodGroup, hospitalName, city, createdBy : id});
+        const patient = await patientModel.create({name, date, age, gender, phone, bloodGroup, hospitalName, city, createdBy : id});
         return res.status(201).json({success : true, "message" : "Patient added successfully", patient});
     } catch (error) {
-        return res.status(500).json({success, "message" : "Internal Server Error", error});
+        return res.status(500).json({success, "message" : "Internal Server Error"});
     }
 }
 

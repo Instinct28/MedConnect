@@ -5,12 +5,20 @@ const patientSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    email : {
+    date : {
         type : String,
         required : true
     },
     phone : {
         type : String,
+        required : true
+    },
+    gender : {
+        type : String,
+        required : true
+    },
+    age : {
+        type : Number,
         required : true
     },
     bloodGroup : {

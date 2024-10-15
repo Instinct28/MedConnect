@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const islogin = async(req, res, next) => {
-    const token = req.headers.authorization;
+    const token = req.headers.token;
     if(!token){
         return res.status(401).json({"message":"Token is not valid"});
     }
